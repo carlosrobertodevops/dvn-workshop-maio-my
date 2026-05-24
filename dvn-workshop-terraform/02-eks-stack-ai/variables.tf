@@ -13,6 +13,17 @@ variable "project" {
   nullable = false
 }
 
+variable "ecr" {
+  description = "Configuration for ECR repositories."
+  type = object({
+    repository_names     = list(string)
+    image_tag_mutability = string
+    scan_on_push         = bool
+    force_delete         = bool
+  })
+  nullable = false
+}
+
 variable "eks" {
   description = "Configuration for the EKS cluster and managed node group."
   type = object({
